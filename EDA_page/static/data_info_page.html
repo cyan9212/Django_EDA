@@ -50,6 +50,7 @@
                 color:black;
             }
             p1 { font-size: 0.8em }
+            p2 {line-height: 200% }
      </style>
 
 </head>
@@ -142,12 +143,14 @@
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h5>Attribute Information</h5>
                     </div>
-                    <p><strong>Age</strong>: age of the patient [years] <br> <strong>Sex</strong>: sex of the patient [M: Male, F: Female] <br> <strong>ChestPainType</strong>: chest pain type [TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic]
-                    <br><strong>RestingBP</strong>: resting blood pressure [mm Hg] <br><strong>Cholesterol</strong>: serum cholesterol [mm/dl] <br><strong>FastingBS</strong>: fasting blood sugar [1: if FastingBS > 120 mg/dl, 0: otherwise]
-                    <br><strong>RestingECG</strong>: resting electrocardiogram results [Normal: Normal, ST: having ST-T wave abnormality, LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria] <br> <strong>MaxHR</strong>: maximum heart rate achieved [Numeric value between 60 and 202]
-                    <br><strong>ExerciseAngina</strong>: exercise-induced angina [Y: Yes, N: No]
-                    <br><strong>Oldpeak</strong>: oldpeak = ST [Numeric value measured in depression]
-                    <br><strong>ST_Slope</strong>: the slope of the peak exercise ST segment [Up: upsloping, Flat: flat, Down: downsloping] <br><strong>HeartDisease</strong>: output class [1: heart disease, 0: Normal]</p>
+                    <div class="col-lg-12 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <p2><strong>Age</strong>: age of the patient [years] <br> <strong>Sex</strong>: sex of the patient [M: Male, F: Female] <br> <strong>ChestPainType</strong>: chest pain type [TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic]
+                        <br><strong>RestingBP</strong>: resting blood pressure [mm Hg] <br><strong>Cholesterol</strong>: serum cholesterol [mm/dl] <br><strong>FastingBS</strong>: fasting blood sugar [1: if FastingBS > 120 mg/dl, 0: otherwise]
+                        <br><strong>RestingECG</strong>: resting electrocardiogram results [Normal: Normal, ST: having ST-T wave abnormality, LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria] <br> <strong>MaxHR</strong>: maximum heart rate achieved [Numeric value between 60 and 202]
+                        <br><strong>ExerciseAngina</strong>: exercise-induced angina [Y: Yes, N: No]
+                        <br><strong>Oldpeak</strong>: oldpeak = ST [Numeric value measured in depression]
+                        <br><strong>ST_Slope</strong>: the slope of the peak exercise ST segment [Up: upsloping, Flat: flat, Down: downsloping] <br><strong>HeartDisease</strong>: output class [1: heart disease, 0: Normal]</p2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -162,18 +165,18 @@
                     </div>
                     <div class="col-lg-11 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                         <p>This dataset was created by combining different datasets already available independently but not combined before. In this dataset, 5 heart datasets are combined over 11 common features which makes it the largest heart disease dataset available so far for research purposes. The five datasets used for its curation are:</p>
-                        <p>
-                            • Cleveland: 303 observations <br>
-                            • Hungarian: 294 observations <br>
-                            • Switzerland: 123 observations <br>
-                            • Long Beach VA: 200 observations <br>
-                            • Stalog (Heart) Data Set: 270 observations
-                        </p>
-                        <p>
-                            Total: 1190 observations <br>
-                            Duplicated: 272 observations
-                        </p>
-                        <p>Final dataset: 918 observations</p>
+                        <p2>
+                            <strong>• Cleveland</strong>: 303 observations<br>
+                            <strong>• Hungarian</strong>: 294 observations<br>
+                            <strong>• Switzerland</strong>: 123 observations <br>
+                            <strong>• Long Beach VA</strong>: 200 observations <br>
+                            <strong>• Stalog (Heart) Data Set</strong>: 270 observations <br><br>
+                        </p2>
+                        <p2>
+                            <strong>Total</strong>: 1190 observations <br>
+                            <strong>Duplicated</strong>: 272 observations <br>
+                        </p2>
+                        <p2><br><strong>Final dataset</strong>: 918 observations<br><br></p2>
 
                         <p>Every dataset used can be found under the Index of heart disease datasets from UCI Machine Learning Repository on the following link <br> https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/</p>
                     </div>
@@ -190,13 +193,13 @@
                             <h5>Creaters</h5>
                         </div>
                         <div class="col-lg-11 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <p>
-                                1. Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.<br>
-                                2. University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.<br>
-                                3. University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D. <br>
-                                4. V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D.
-                            </p>
-                            <p>Donor: David W. Aha (aha '@' ics.uci.edu) (714) 856-8779</p>
+                            <p2>
+                                <strong>1.</strong> Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.<br>
+                                <strong>2.</strong> University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.<br>
+                                <strong>3.</strong> University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D. <br>
+                                <strong>4.</strong> V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D. <br><br>
+                            </p2>
+                            <p2><strong>Donor</strong>: David W. Aha (aha '@' ics.uci.edu) (714) 856-8779</p2>
                         </div>
                     </div>
                 </div>
