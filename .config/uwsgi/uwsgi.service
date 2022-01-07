@@ -3,7 +3,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/myvenv/bin/uwsgi -i /srv/Django_EDA/.config/uwsgi/Heartfailure_EDA.ini
+ExecStart=/home/ubuntu/venv/bin/uwsgi -i /srv/Django_EDA/.config/uwsgi/Heartfailure_EDA.ini
 
 Restart=always
 KillSignal=SIGQUIT
