@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 # Create your views here.
 def main_page_view(request):
-    return render(request, 'main_page.html', {})
+    return render(request, 'index.html', {})
 
 def graph_view(request):
     fig, ax = plt.figure(figsize=(10, 10))
