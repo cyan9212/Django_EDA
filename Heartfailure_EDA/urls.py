@@ -20,6 +20,6 @@ from EDA_page.views import graph_view
 
 urlpatterns = [
     path('', main_page_view),
-    path('/graph', graph_view),
+    path('graph/', graph_view),
     path('admin/', admin.site.urls),
 ]
