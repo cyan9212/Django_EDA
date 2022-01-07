@@ -5,5 +5,5 @@ from django.shortcuts import render
 def main_page_view(request):
     return render(request, 'index.html', {})
 
-def data_info_view(request):
+def data_page_view(request):
     return render(request, 'data_info_page.html', {})
