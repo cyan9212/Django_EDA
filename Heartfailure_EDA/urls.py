@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from EDA_page.views import main_page_view
+from EDA_page.views import graph_view
 
 urlpatterns = [
     path('', main_page_view),
+    path('/graph', graph_view),
     path('admin/', admin.site.urls),
 ]
