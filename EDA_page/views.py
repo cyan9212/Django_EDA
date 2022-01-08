@@ -7,3 +7,6 @@ def main_page_view(request):
 
 def data_page_view(request):
     return render(request, 'data_info_page.html', {})
+
+def visualization_page_view(request):
+    return render(request, 'visualization_page.html', {})
