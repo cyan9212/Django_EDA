@@ -13,9 +13,6 @@ def data_page_view(request):
 def visualization_page_view(request):
     if request.method == "POST":
         form = FeatureForm(request.POST)
-        if form.is_valid():
-            form.save()
-
         if 'feature1' in form.data and 'feature2' in form.data:
             if 'hue' in form.data:
                 chart = get_plot_hue(form.data['feature1'], form.data['feature2'], form.data['hue'])
