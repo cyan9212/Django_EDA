@@ -31,28 +31,67 @@
     <!-- Template Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-     <style>
+    <style>
             body {
                 background:url("{% static 'img/background.png' %}") no-repeat center fixed;
                 background-size:cover;
             }
-            .ghost-button {
-                align-items: center;
-                display: inline;
-                padding: 80px 10px;
-                margin:  0px 0px;
-                border: 0px solid #d9cbb3;
+            .submit-button {
+                background-color:#f9ffed;
+                width:200px;
+                height:60px;
+                border: 2px solid #344810;
                 color: black;
                 text-align: inline;
             }
-             .ghost-button:hover {
+             .submit-button:hover {
                 text-decoration: none;
+                background-color:#e9f5d3;
                 color:black;
             }
             p1 { font-size: 0.8em }
             p2 {line-height: 200% }
-     </style>
+    </style>
+    <script language="JavaScript">
+        var count1 = 0;
+        var count2 = 0;
+        var count3 = 0;
+        var max = 1;
+        function RadioCheck1(field){
+            if (field.checked)
+                count1 +=1;
+            else
+                count1-=1;
+            if (count1 > max){
+                alert("Only one feature can be selected")
+                field.checked = false;
+                count1-=1;
+            }
+        }
 
+        function RadioCheck2(field){
+            if (field.checked)
+                count2+=1;
+            else
+                count2-=1
+            if (count2 > 1){
+                alert("You can only select one hue")
+                field.checked = false;
+                count2-=1;
+            }
+        }
+        function RadioCheck3(field){
+            if (field.checked)
+                count3 +=1;
+            else
+                count3-=1;
+            if (count3 > max){
+                alert("Only one feature can be selected")
+                field.checked = false;
+                count3-=1;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -73,13 +112,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link">Home</a>
                         <a href="/data" class="nav-item nav-link">Data Description</a>
-                        <a href="/visualization" class="nav-item nav-link">Visualization</a>
+                        <a href="/visualization" class="nav-item nav-link active">Visualization</a>
                     </div>
                 </div>
             </nav>
-            <div class="container-xxl py-5 bg-light hero-header mb-5">
+            <div class="container-xxl py-5 bg-light hero-header mb-5" style="margin:0;">
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -95,139 +134,105 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <a href="#data_attribute" class="ghost-button" color="dark">
-                            <div class="service-item rounded pt-3">
-                                <div class="p-4">
-                                        <h5>
-                                            <i class="fas fa-3x fa-book-medical text-dark mb-4"></i>
-                                            <p>Attribute Information</p>
-                                        </h5>
+                    <div class="col-8 wow fadeInUp" data-wow-delay="0.1s">
+                        {% if chart %}
+                            <img src="data:image.png;base64, {{ chart|safe }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-4 wow fadeInUp" data-wow-delay="0.1s" style="background-color:#83b528; color:white">
+                        <br>
+                        <form name="feature_form" method="post">{% csrf_token %}
+                            <h4>Feature 1</h4>
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="Age" />Age
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="Sex" />Sex
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="ChestPainType" />ChestPainType
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="RestingECG" />RestingECG
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="RestingBP" />RestingBP
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="Cholesterol" />Cholesterol
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="FastingBS" />FastingBS
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="MaxHR" />MaxHR
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="ExerciseAngina" />ExerciseAngina
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="Oldpeak" />Oldpeak
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="ST_Slope" />ST_Slope
+                                    <br>
+                                    <input onclick="RadioCheck1(this)" type="checkbox" name="feature1" value="HeartDisease" />HeartDisease
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <a href="#source" class="ghost-button" color="dark">
-                            <div class="service-item rounded pt-3">
-                                <div class="p-4">
-                                        <h5>
-                                            <i class="fas fa-3x fa-search text-dark mb-4"></i>
-                                            <p>Source</p>
-                                        </h5>
+                            <br>
+                            <h4>Feature 2</h4>
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="Age" />Age
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="Sex" />Sex
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="ChestPainType" />ChestPainType
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="RestingECG" />RestingECG
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="RestingBP" />RestingBP
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="Cholesterol" />Cholesterol
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="FastingBS" />FastingBS
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="MaxHR" />MaxHR
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="ExerciseAngina" />ExerciseAngina
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="Oldpeak" />Oldpeak
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="ST_Slope" />ST_Slope
+                                    <br>
+                                    <input onclick="RadioCheck3(this)" type="checkbox" name="feature2" value="HeartDisease" />HeartDisease
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <a href="#creater" class="ghost-button" color="dark">
-                            <div class="service-item rounded pt-3">
-                                <div class="p-4">
-                                        <h5>
-                                            <i class="far fa-3x fa-lightbulb text-dark mb-4"></i>
-                                            <p>Creaters</p>
-                                        </h5>
+                            <br>
+                            <h4>Hue</h4>
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="Sex" />Sex
+                                    <br>
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="ChestPainType" />ChestPainType
+                                    <br>
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="RestingECG" />RestingECG
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="FastingBS" />FastingBS
+                                    <br>
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="ExerciseAngina" />ExerciseAngina
+                                </div>
+                                <div class="col-4">
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="ST_Slope" />ST-Slope
+                                    <br>
+                                    <input onclick="RadioCheck2(this)" type="checkbox" name="hue" value="HeartDisease" />HeartDisease
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <a name="data_attribute"></a>
-        </div>
-        <!-- Service End -->
-
-        <!-- Attribute Info Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <h4>Attribute Information</h4>
-                    </div>
-                    <div class="col-lg-12 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <p2>
-                            <strong>Age:</strong> age of the patient [years]
-                            <br><strong>Sex:</strong> sex of the patient [M: Male, F: Female]
-                            <br><strong>ChestPainType:</strong> chest pain type [TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic]
-                            <br><strong>RestingBP:</strong> resting blood pressure [mm Hg]
-                            <br><strong>Cholesterol:</strong> serum cholesterol [mm/dl]
-                            <br><strong>FastingBS:</strong> fasting blood sugar [1: if FastingBS > 120 mg/dl, 0: otherwise]
-                            <br><strong>RestingECG:</strong> resting electrocardiogram results [Normal: Normal, ST: having ST-T wave abnormality, LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria]
-                            <br><strong>MaxHR:</strong> maximum heart rate achieved [Numeric value between 60 and 202]
-                            <br><strong>ExerciseAngina:</strong> exercise-induced angina [Y: Yes, N: No]
-                            <br><strong>Oldpeak:</strong> oldpeak = ST [Numeric value measured in depression]
-                            <br><strong>ST_Slope:</strong> the slope of the peak exercise ST segment [Up: upsloping, Flat: flat, Down: downsloping]
-                            <br><strong>HeartDisease:</strong> output class [1: heart disease, 0: Normal]<br>
-                        </p2>
-                    </div>
-                    <div class="col-lg-12 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <h5><br><br>Data Attributes<br></h5>
-                        <img src="{% static 'img/data_attribute.png' %}" alt="Image"><br>
-                        <h5><br><br><br>Descriptive statistics</h5>
-                        <img src="{% static 'img/data_describe.png' %}" alt="Image"><br>
-                    </div>
-                </div>
-            </div>
-            <a name="source"></a>
-        </div>
-        <!-- Attribute Info End -->
-
-        <!-- Source Start -->
-         <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <h4>Source</h4>
-                    </div>
-                    <div class="col-lg-11 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <p>
-                            <strong>Dataset Link:</strong>
-                            <a href="#" style="color:#83b528" onClick="window.open('https://www.kaggle.com/fedesoriano/heart-failure-prediction')">https://www.kaggle.com/fedesoriano/heart-failure-prediction</a>
-                        </p>
-                        <p>This dataset was created by combining different datasets already available independently but not combined before. In this dataset, 5 heart datasets are combined over 11 common features which makes it the largest heart disease dataset available so far for research purposes. The five datasets used for its curation are:</p>
-                        <p2>
-                            <strong>• Cleveland:</strong> 303 observations<br>
-                            <strong>• Hungarian:</strong> 294 observations<br>
-                            <strong>• Switzerland:</strong> 123 observations <br>
-                            <strong>• Long Beach VA:</strong> 200 observations <br>
-                            <strong>• Stalog (Heart) Data Set:</strong> 270 observations <br><br>
-                        </p2>
-                        <p2>
-                            <strong>Total:</strong> 1190 observations <br>
-                            <strong>Duplicated:</strong> 272 observations <br>
-                        </p2>
-                        <p2><br><strong>Final dataset:</strong> 918 observations<br><br></p2>
-
-                        <p>Every dataset used can be found under the Index of heart disease datasets from UCI Machine Learning Repository on the following link</p>
-                        <a href="#" style="color:#83b528" onClick="window.open('https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/')">https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/</a>
+                            <br><br>
+                            <h4><input class="submit-button" type="submit" value="Visualization" style="font-weight:bold"></h4>
+                            <br><br>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Source End -->
-
-
-        <!-- Creaters Start -->
-        <a name="creater"></a>
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <h4>Creaters</h4>
-                        </div>
-                        <div class="col-lg-11 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <p2>
-                                <strong>1.</strong> Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.<br>
-                                <strong>2.</strong> University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.<br>
-                                <strong>3.</strong> University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D. <br>
-                                <strong>4.</strong> V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D. <br><br>
-                            </p2>
-                            <p2><strong>Donor</strong>: David W. Aha (aha '@' ics.uci.edu) (714) 856-8779</p2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- Creaters End -->
+        <!-- Service End -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
