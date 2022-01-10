@@ -87,7 +87,7 @@ def get_hist_hue(x, hue):
     if x in numeric:
         sns.kdeplot(x, hue=hue, fill=True, data=heart_df)
     else:
-        sns.countplot(x, hue=hue, data=heart_df)
+        sns.countplot(x,hue=hue, data=heart_df)
     plt.tight_layout()
     graph = get_graph()
     return graph
